@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "250714296800",
+    "firebase_url": "https://khamitov-bee8a.firebaseio.com",
+    "project_id": "khamitov-bee8a",
+    "storage_bucket": "khamitov-bee8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250714296800:android:79a461e89ef0a1e7afdb85",
+        "android_client_info": {
+          "package_name": "com.example.khamitov"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "250714296800-4r4bsitmiuar38jan8b93cgo3p3ut00m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe3BcIIB2B2LtapPx1BHtGUgyAU8Rny68"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "250714296800-4r4bsitmiuar38jan8b93cgo3p3ut00m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
