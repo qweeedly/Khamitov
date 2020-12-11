@@ -2,6 +2,7 @@ package com.example.khamitov;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -15,6 +16,13 @@ public class LoadedUserDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loaded_user_data);
         Init();
+        goNext();
+    }
+
+    private void goNext() {
+        Intent intent = new Intent(this,ProfileMapsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void Init() {

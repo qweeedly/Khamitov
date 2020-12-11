@@ -19,6 +19,8 @@ public class UserStaticInfo {
     public  final static String AGE = "age";
     public  final static String STATE = "state";
     public static String profileId;
+    public  final static String POSITION_LATITUDE = "Latitude";
+    public  final static String POSITION_LONGITUDE = "Longitude";
     public UserStaticInfo() {
        if(users.size()==0)
            AddUsersInList();
