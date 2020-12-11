@@ -17,10 +17,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.util.jar.Attributes;
+
+import static com.example.khamitov.UserStaticInfo.ActiveUser;
 import static com.example.khamitov.UserStaticInfo.POSITION_LATITUDE;
 import static com.example.khamitov.UserStaticInfo.POSITION_LONGITUDE;
 import static com.example.khamitov.UserStaticInfo.USERS_PROFILE_INFO;
@@ -29,8 +34,11 @@ import static com.example.khamitov.UserStaticInfo.profileId;
 public class ProfileMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private TextView LatitudeTextView, LongitudeTextView;
+    private TextView LatitudeTextView, LongitudeTextView, NameTextView;
     FirebaseDatabase database;
+    Location lastLocation;
+    PolylineOptions rectOptions = new PolylineOptions();
+    Polyline polygon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +49,13 @@ public class ProfileMapsActivity extends FragmentActivity implements OnMapReadyC
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Init();
+        NameTextView.setText(ActiveUser.getName());
     }
 
     private void Init() {
         LongitudeTextView = findViewById(R.id.LongitudeTextView);
         LatitudeTextView = findViewById(R.id.LatiduteTextView);
+        NameTextView = findViewById(R.id.NameTextView);
     }
 
     @Override
@@ -87,6 +97,16 @@ public class ProfileMapsActivity extends FragmentActivity implements OnMapReadyC
                         database.getReference(USERS_PROFILE_INFO).child(profileId).child(POSITION_LONGITUDE).setValue(Lon);
                         LatitudeTextView.setText(Lat);
                         LongitudeTextView.setText(Lon);
+                        if(lastLocation!=null)
+                        {
+                            if(polygon!=null)
+                                polygon.remove();
+                            rectOptions.add(new LatLng(location.getLatitude(),location.getLongitude()));
+                            polygon = mMap.addPolyline(rectOptions);
+                        }
+                        else
+                            rectOptions.add(new LatLng(location.getLatitude(),location.getLongitude()));
+                        lastLocation = location;
                 }
             }
         });

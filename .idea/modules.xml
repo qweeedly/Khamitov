@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Khamitov.iml" filepath="$PROJECT_DIR$/.idea/modules/Khamitov.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Khamitov.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Khamitov.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Khamitov.iml" filepath="$PROJECT_DIR$/.idea/modules/Khamitov.iml" group="Khamitov" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Khamitov/app" />
     </modules>
   </component>
 </project>

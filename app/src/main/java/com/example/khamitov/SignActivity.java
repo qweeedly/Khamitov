@@ -207,4 +207,8 @@ public class SignActivity extends AppCompatActivity {
     private String getNewState() {
         return  NewStateTextView.getText().toString();
     }
+
+    public void SignIn(View view) {
+        SignIn();
+    }
 }

@@ -2,6 +2,7 @@ package com.example.khamitov;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Vibrator;
 
 import static com.example.khamitov.UserStaticInfo.LOGIN;
@@ -64,4 +65,13 @@ public class Transform {
     private SharedPreferences getSharedPreferences(String appPreferences, int modePrivate) {
         return null;
     }
+    public static Bitmap getRoundedMapBitmap(Bitmap bitmap) {
+        int iconSize = 100;
+        Bitmap output = Bitmap.createScaledBitmap(bitmap, iconSize, iconSize, false);
+        return getRoundedCornerCubeBitmap(output,iconSize);}
+
+    private static Bitmap getRoundedCornerCubeBitmap(Bitmap output, int iconSize) {
+        return null;
+    }
+
 }
