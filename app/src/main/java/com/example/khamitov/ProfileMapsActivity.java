@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentActivity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -25,6 +29,7 @@ import org.w3c.dom.Text;
 
 import java.util.jar.Attributes;
 
+import static com.example.khamitov.Transform.getRoundedMapBitmap;
 import static com.example.khamitov.UserStaticInfo.ActiveUser;
 import static com.example.khamitov.UserStaticInfo.POSITION_LATITUDE;
 import static com.example.khamitov.UserStaticInfo.POSITION_LONGITUDE;
@@ -83,11 +88,11 @@ public class ProfileMapsActivity extends FragmentActivity implements OnMapReadyC
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener(){
-
             @Override
             public void onMyLocationChange(Location location) {
                 if(location!=null)
                 {
+                    mMap.clear();
                     if(database==null)
                         database = FirebaseDatabase.getInstance();
 
@@ -97,18 +102,28 @@ public class ProfileMapsActivity extends FragmentActivity implements OnMapReadyC
                         database.getReference(USERS_PROFILE_INFO).child(profileId).child(POSITION_LONGITUDE).setValue(Lon);
                         LatitudeTextView.setText(Lat);
                         LongitudeTextView.setText(Lon);
+                        LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
                         if(lastLocation!=null)
                         {
                             if(polygon!=null)
                                 polygon.remove();
-                            rectOptions.add(new LatLng(location.getLatitude(),location.getLongitude()));
+                            rectOptions.add(latLng);
                             polygon = mMap.addPolyline(rectOptions);
                         }
                         else
-                            rectOptions.add(new LatLng(location.getLatitude(),location.getLongitude()));
+                            rectOptions.add(latLng);
                         lastLocation = location;
+
+
+                        Bitmap bitmap = BitmapFactory.decodeResource( getResources(),R.drawable.dota);
+                        mMap.addMarker(new MarkerOptions()
+                                .position(latLng)
+                                .icon(BitmapDescriptorFactory.fromBitmap(getRoundedMapBitmap(bitmap))));
+
                 }
             }
         });
     }
+
+
 }

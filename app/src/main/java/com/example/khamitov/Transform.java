@@ -70,8 +70,9 @@ public class Transform {
         Bitmap output = Bitmap.createScaledBitmap(bitmap, iconSize, iconSize, false);
         return getRoundedCornerCubeBitmap(output,iconSize);}
 
-    private static Bitmap getRoundedCornerCubeBitmap(Bitmap output, int iconSize) {
+    public static Bitmap getRoundedCornerCubeBitmap(Bitmap output, int iconSize) {
         return null;
     }
+
 
 }

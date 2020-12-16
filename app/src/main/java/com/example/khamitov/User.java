@@ -25,6 +25,7 @@ public class User {
 
     }
 
+
     public int getStateSignal() {
         return StateSignal;
     }
@@ -57,11 +58,4 @@ public class User {
         Age = age;
     }
 
-    public User(String name, String state, int age, int stateSignal) {
-        Name = name;
-        State = state;
-        Age = age;
-        StateSignal = stateSignal;
-
-    }
 }

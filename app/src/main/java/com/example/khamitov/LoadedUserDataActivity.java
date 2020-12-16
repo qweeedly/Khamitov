@@ -55,8 +55,8 @@ public class LoadedUserDataActivity extends AppCompatActivity {
     ValueEventListener eventListener = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            if(StringNoNull(dataSnapshot.child(NAME).getValue().toString()))
-            goNext(dataSnapshot);
+            if(StringNoNull((String) dataSnapshot.child(NAME).getValue()))
+                goNext(dataSnapshot);
         }
 
         @Override
@@ -93,5 +93,6 @@ public class LoadedUserDataActivity extends AppCompatActivity {
             mPlayer.stop();
         }
     }
+
 
 }
